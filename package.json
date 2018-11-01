@@ -1,0 +1,51 @@
+{
+  "name": "progImage",
+  "version": "1.0.0",
+  "description": "Image rendering microservice",
+  "scripts": {
+    "start": "nodemon ./index.js",
+    "test": "npm run test:integration",
+    "test:watch": "nyc mocha --require source-map-support/register --full-trace \"tests/**/*.test.js\" --timeout 999999 --watch",
+    "test:integration": "nyc mocha --require source-map-support/register --full-trace \"tests/**/*.test.js\" --timeout 999999 --exit"
+  },
+  "author": "kash@karimi.info",
+  "license": "MIT",
+  "devDependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "nodemon": "^1.14.11",
+    "nyc": "^13.1.0",
+    "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.186.0",
+    "chai": "^4.2.0",
+    "connect-multiparty": "^2.2.0",
+    "dotenv": "^4.0.0",
+    "mocha": "^5.2.0",
+    "multiparty": "^4.2.1",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-apigwy-binary": "^0.1.0",
+    "sharp": "^0.21.0",
+    "sinon": "^7.1.0",
+    "uuid": "^3.3.2"
+  },
+  "nyc": {
+    "include": [
+      "index.js"
+    ],
+    "exclude": [
+      "handler.js"
+    ],
+    "extension": [
+      ".js"
+    ],
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true,
+    "all": true
+  }
+}
